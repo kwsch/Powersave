@@ -44,6 +44,7 @@ namespace Powersaves
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.L_Edited = new System.Windows.Forms.Label();
+            this.B_Reset = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // B_Open
@@ -61,9 +62,9 @@ namespace Powersaves
             // 
             this.B_Export.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.B_Export.Enabled = false;
-            this.B_Export.Location = new System.Drawing.Point(250, 39);
+            this.B_Export.Location = new System.Drawing.Point(291, 39);
             this.B_Export.Name = "B_Export";
-            this.B_Export.Size = new System.Drawing.Size(114, 23);
+            this.B_Export.Size = new System.Drawing.Size(73, 23);
             this.B_Export.TabIndex = 1;
             this.B_Export.Text = "Export";
             this.B_Export.UseVisualStyleBackColor = true;
@@ -93,11 +94,24 @@ namespace Powersaves
             this.L_Edited.Text = "Edited: {0}";
             this.L_Edited.Visible = false;
             // 
+            // B_Reset
+            // 
+            this.B_Reset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.B_Reset.Enabled = false;
+            this.B_Reset.Location = new System.Drawing.Point(209, 39);
+            this.B_Reset.Name = "B_Reset";
+            this.B_Reset.Size = new System.Drawing.Size(73, 23);
+            this.B_Reset.TabIndex = 6;
+            this.B_Reset.Text = "Reset (FF)";
+            this.B_Reset.UseVisualStyleBackColor = true;
+            this.B_Reset.Click += new System.EventHandler(this.ResetBackup);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(376, 72);
+            this.Controls.Add(this.B_Reset);
             this.Controls.Add(this.L_Edited);
             this.Controls.Add(this.TB_Path);
             this.Controls.Add(this.B_Export);
@@ -115,5 +129,6 @@ namespace Powersaves
         #endregion
 
         private Label L_Edited;
+        private Button B_Reset;
     }
 }

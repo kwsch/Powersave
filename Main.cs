@@ -25,7 +25,7 @@ namespace Powersaves
             TB_Path.Text = path;
             bak = new PowersaveBackup(data);
             L_Edited.Text = $"Edited: {bak.Edited}" + Environment.NewLine + bak.BackupName;
-            L_Edited.Visible = B_Export.Enabled = true;
+            L_Edited.Visible = B_Reset.Enabled = B_Export.Enabled = true;
         }
 
         private void OpenBrowse(object sender, EventArgs e)
@@ -39,6 +39,11 @@ namespace Powersaves
             saveFileDialog1.FileName = savename + " - [Fixed].bin";
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 SaveBackup(saveFileDialog1.FileName);
+        }
+        private void ResetBackup(object sender, EventArgs e)
+        {
+            // FF the entire cart savedata
+            bak.Reset();
         }
     }
 }
