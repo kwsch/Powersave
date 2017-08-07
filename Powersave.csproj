@@ -52,15 +52,24 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SaveContainer\DIFI.cs" />
+    <Compile Include="SaveContainer\DISA.cs" />
+    <Compile Include="SaveContainer\DPFS.cs" />
+    <Compile Include="SaveContainer\FSTEntry.cs" />
+    <Compile Include="SaveContainer\IVFC.cs" />
+    <Compile Include="SaveContainer\IVFCLevel.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="SaveContainer\PartitionTable.cs" />
     <Compile Include="PowersaveBackup.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="SaveContainer\SaveContainer.cs" />
+    <Compile Include="SaveContainer\StructConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

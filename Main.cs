@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
+using CTR;
 
 namespace Powersaves
 {
@@ -44,6 +46,21 @@ namespace Powersaves
         {
             // FF the entire cart savedata
             bak.Reset();
+        }
+
+        private void ReadDecrypted(string path)
+        {
+            var data = File.ReadAllBytes(path);
+            var sav = new SaveContainer(data);
+        }
+
+        private static void ApplyXORPad(byte[] dest, byte[] xorpad)
+        {
+            if (dest.Length != xorpad.Length)
+                throw new ArgumentException($"{nameof(dest)} length ({dest.Length}) != {nameof(xorpad)} length ({xorpad.Length})");
+
+            for (int i = 0; i < dest.Length; i++)
+                dest[i] ^= xorpad[i];
         }
     }
 }
