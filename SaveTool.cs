@@ -33,7 +33,7 @@ namespace CTR
                 K[i] = (byte)((K[i] << 1) | (K[i + 1] >> 7));
             K[15] = (byte)(K[15] << 1);
         }
-        private byte[] SignHash(ref byte[] hash)
+        private byte[] SignHash(byte[] hash)
         {
             engine.SelectKeyslot(0x30);
             engine.SetMode(AesMode.ECB);
@@ -57,10 +57,7 @@ namespace CTR
                 subkey[15] ^= 0x87;
 
             for (int i = 0; i < 16; ++i)
-            {
-                hash[i + 16] ^= subkey[i];
-                block[i] ^= (byte)(hash[i + 16] ^ subkey[i]);
-            }
+                block[i] ^= (byte)(subkey[i] ^ hash[i + 16]);
 
             return engine.Encrypt(block);
         }
@@ -81,7 +78,7 @@ namespace CTR
             sha.TransformFinalBlock(headerHash, 0, headerHash.Length);
 
             byte[] totalHash = sha.Hash;
-            return SignHash(ref totalHash);
+            return SignHash(totalHash);
         }
         public byte[] DecryptDigitalSave(byte[] encryptedData, string szBasePath)
         {
