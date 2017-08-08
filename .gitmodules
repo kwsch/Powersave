@@ -1,0 +1,3 @@
+[submodule "CTRAesEngine"]
+	path = CTRAesEngine
+	url = https://github.com/SciresM/CTRAesEngine
